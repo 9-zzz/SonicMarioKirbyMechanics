@@ -1793,6 +1793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ringFallen: {fileID: 121120, guid: 48d46eaa0b69c024498dc44a7f2fdb51, type: 2}
+  ringExplodeSound: {fileID: 8300000, guid: 92fdf241aef7a9e4085f45ab1026ea96, type: 3}
 --- !u!1 &1817704669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,9 +1896,9 @@ GameObject:
   - 33: {fileID: 1841880837}
   - 23: {fileID: 1841880836}
   - 114: {fileID: 1841880835}
+  - 114: {fileID: 1841880839}
   - 50: {fileID: 1841880834}
   - 61: {fileID: 1841880833}
-  - 114: {fileID: 1841880839}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -1927,7 +1928,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1841880832}
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
@@ -1948,7 +1949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5
-  jumpForce: 600
+  jumpForce: 120
 --- !u!23 &1841880836
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2010,7 +2011,6 @@ MonoBehaviour:
   flashTime: 0.05
   rings: 10
   gotMushroom: 0
-  canPickupRings: 1
 --- !u!4 &1886356803 stripped
 Transform:
   m_PrefabParentObject: {fileID: 429436, guid: f07fe2c54645a7246868cc56f48f012e, type: 2}

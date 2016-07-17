@@ -27,6 +27,7 @@ public class PlayerStatus : MonoBehaviour
         // Is now on a layer that can not collide with rings. 
         // Set in the editor "Edit" -> "Project Settings" -> "Physics 2D".
         gameObject.layer = 8;
+
         for (int i = 0; i < flashes; i++)
         {
             GetComponent<MeshRenderer>().enabled = false;
@@ -34,6 +35,8 @@ public class PlayerStatus : MonoBehaviour
             GetComponent<MeshRenderer>().enabled = true;
             yield return new WaitForSeconds(flashTime);
         }
+
+        // Back on default layer after (flashTime*flashes) amount of time, in seconds.
         gameObject.layer = 0;
     }
 

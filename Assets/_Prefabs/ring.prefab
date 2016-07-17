@@ -130,6 +130,7 @@ MonoBehaviour:
   ringLifetime: 6
   ringParticles: {fileID: 172582, guid: 0c78597af7e681e48b9e38fbd2241947, type: 2}
   fallen: 0
+  ringSound: {fileID: 8300000, guid: ac1befb007523b144b5c82dfe1b87282, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

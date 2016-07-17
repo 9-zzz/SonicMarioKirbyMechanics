@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
+// This is an extremely quick and dirty demo-only 2D character controller.
+// The focus of this tutorial is on the other mechanics.
 public class Simple2DPlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb2d;
@@ -15,16 +18,17 @@ public class Simple2DPlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        float move = Input.GetAxis("Horizontal");
-
-        rb2d.velocity = new Vector2(move * maxSpeed, rb2d.velocity.y);
+        rb2d.velocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, rb2d.velocity.y);
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
-            rb2d.AddForce(new Vector2(0, jumpForce));
+            rb2d.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+
+        if (Input.GetKeyDown(KeyCode.R))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }

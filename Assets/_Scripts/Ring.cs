@@ -12,6 +12,8 @@ public class Ring : MonoBehaviour
 
     public bool fallen = false;
 
+    public AudioClip ringSound;
+
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -23,6 +25,7 @@ public class Ring : MonoBehaviour
         if (fallen)
         {
             Destroy(gameObject, ringLifetime);
+            rb2d.gravityScale = 0.75f;
             rb2d.AddForce(new Vector2(Random.Range(-4.0f, 4.0f), Random.Range(4, 7)), ForceMode2D.Impulse);
         }
     }
@@ -51,6 +54,7 @@ public class Ring : MonoBehaviour
 
     public void PickupRing()
     {
+        AudioSource.PlayClipAtPoint (ringSound, transform.position);
         PlayerStatus.S.rings += 1;
         Instantiate(ringParticles, transform.position, Quaternion.identity);
         Destroy(gameObject);
