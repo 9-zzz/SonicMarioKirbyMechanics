@@ -3,13 +3,14 @@ using System.Collections;
 
 public class PlayerStatus : MonoBehaviour
 {
-    public float flashTime;
+    // This is a singleton.
     public static PlayerStatus S;
+
+    public float flashTime;
 
     public int rings = 0;
 
     public bool gotMushroom = false;
-    public bool canPickupRings = true;
 
     void Awake()
     {
@@ -23,7 +24,9 @@ public class PlayerStatus : MonoBehaviour
 
     IEnumerator HurtColliderFlash(int flashes)
     {
-        canPickupRings = false;
+        // Is now on a layer that can not collide with rings. 
+        // Set in the editor "Edit" -> "Project Settings" -> "Physics 2D".
+        gameObject.layer = 8;
         for (int i = 0; i < flashes; i++)
         {
             GetComponent<MeshRenderer>().enabled = false;
@@ -31,19 +34,7 @@ public class PlayerStatus : MonoBehaviour
             GetComponent<MeshRenderer>().enabled = true;
             yield return new WaitForSeconds(flashTime);
         }
-        canPickupRings = true;
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        gameObject.layer = 0;
     }
 
 }

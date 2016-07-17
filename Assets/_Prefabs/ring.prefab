@@ -126,7 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fd289e34f5d654086f393ae230e9e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 200
+  rotationSpeed: 300
+  ringLifetime: 6
   ringParticles: {fileID: 172582, guid: 0c78597af7e681e48b9e38fbd2241947, type: 2}
   fallen: 0
 --- !u!1001 &100100000

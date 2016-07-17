@@ -3,38 +3,57 @@ using System.Collections;
 
 public class Ring : MonoBehaviour
 {
-    public float speed = 30;
+    Rigidbody2D rb2d;
+
+    public float rotationSpeed = 30;
+    public float ringLifetime = 6;
+
     public GameObject ringParticles;
 
     public bool fallen = false;
+
+    void Awake()
+    {
+        rb2d = GetComponent<Rigidbody2D>();
+    }
 
     // Use this for initialization
     void Start()
     {
         if (fallen)
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-85, 85), Random.Range(0, 85)));
+        {
+            Destroy(gameObject, ringLifetime);
+            rb2d.AddForce(new Vector2(Random.Range(-4.0f, 4.0f), Random.Range(4, 7)), ForceMode2D.Impulse);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, speed * Time.deltaTime, 0);
+        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player" && PlayerStatus.S.canPickupRings)
+        if (other.gameObject.tag == "Player")
         {
-            PlayerStatus.S.rings += 1;
-            Instantiate(ringParticles, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            PickupRing();
         }
+    }
 
-        if (fallen)
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 0);
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 250));
+            PickupRing();
         }
+    }
+
+    public void PickupRing()
+    {
+        PlayerStatus.S.rings += 1;
+        Instantiate(ringParticles, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
 }

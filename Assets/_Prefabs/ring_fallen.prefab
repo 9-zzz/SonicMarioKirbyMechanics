@@ -93,7 +93,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: b866b1f4bf19ccf47bec6e626fa2d3a5, type: 2}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -126,7 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fd289e34f5d654086f393ae230e9e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 200
+  rotationSpeed: 300
+  ringLifetime: 20
   ringParticles: {fileID: 172582, guid: 0c78597af7e681e48b9e38fbd2241947, type: 2}
   fallen: 1
 --- !u!1001 &100100000

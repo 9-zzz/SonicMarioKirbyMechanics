@@ -3,21 +3,14 @@ using System.Collections;
 
 public class Simple2DPlayerMovement : MonoBehaviour
 {
+    Rigidbody2D rb2d;
 
     public float maxSpeed = 10.0f;
     public float jumpForce = 200.0f;
 
-    Rigidbody2D rb2d;
-
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-
     }
 
     void FixedUpdate()
