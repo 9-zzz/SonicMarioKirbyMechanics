@@ -1,23 +1,21 @@
 using UnityEngine;
 using System.Collections;
 
+// This class handles two types of rings.
+// The rings are tagged "ring" and on the "ring" layer.
+// Set gravity scale to zero and collider to 'is trigger' for regular ring.
+// Set gravity scale to 1 and freeze rotation along z-axis for 'ring_fallen' prefab.
 public class Ring : MonoBehaviour
 {
-    Rigidbody2D rb2d;
-
-    public float rotationSpeed = 30;
+    public float rotationSpeed = 300;
     public float ringLifetime = 6;
 
+    // Dragged in the ringParticles prefab in Unity Editor.
     public GameObject ringParticles;
 
     public bool fallen = false;
 
     public AudioClip ringSound;
-
-    void Awake()
-    {
-        rb2d = GetComponent<Rigidbody2D>();
-    }
 
     // Use this for initialization
     void Start()
@@ -34,7 +32,7 @@ public class Ring : MonoBehaviour
         transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
     }
 
-    // For when it's in its' default suspended state. Exists until player hits it.
+    // For when it's in its' default regular ring suspended state. Exists until player hits it.
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
@@ -43,7 +41,7 @@ public class Ring : MonoBehaviour
         }
     }
 
-    // For when it falls out of the player. In Start() we set it to be destroyed after some time.
+    // For when it falls out of the player. In Start() we set it to be destroyed automatically after some time.
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player")
@@ -54,8 +52,9 @@ public class Ring : MonoBehaviour
 
     public void PickupRing()
     {
-        AudioSource.PlayClipAtPoint(ringSound, transform.position);
+        // We make use of the singleton on the PlayerStatus script as there is only one unique player.
         PlayerStatus.S.rings += 1;
+        AudioSource.PlayClipAtPoint(ringSound, transform.position);
         Instantiate(ringParticles, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

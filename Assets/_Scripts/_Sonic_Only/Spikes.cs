@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Spikes : MonoBehaviour
 {
+    // Dragged the 'ring_fallen' prefab in editor.
     public GameObject ringFallen;
 
     public AudioClip ringExplodeSound;
@@ -11,6 +12,7 @@ public class Spikes : MonoBehaviour
 
     void Start()
     {
+        // Accessing player's children tranforms through singleton at runtime.
         ringShooter = PlayerStatus.S.transform.GetChild(1);
     }
 
@@ -27,11 +29,14 @@ public class Spikes : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(ringExplodeSound, transform.position);
 
-        PlayerStatus.S.HurtColliderFlashMethod();
+        PlayerStatus.S.HurtFlashMethod();
 
         for (int i = 0; i < PlayerStatus.S.rings; i++)
         {
+            // Randomly fans out the rings in a 180 angle range above the player.
             ringShooter.transform.rotation = Quaternion.Euler(0, 0, Random.Range(-90, 90));
+
+            // Alternative method for shooting rings out of the player. 
             //ringShooter.transform.Rotate(0, 0, (180 / PlayerStatus.S.rings));
 
             var ringF = Instantiate(ringFallen, PlayerStatus.S.transform.position, Quaternion.identity) as GameObject;

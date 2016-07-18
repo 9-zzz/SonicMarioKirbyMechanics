@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class AutoDestroyPS : MonoBehaviour
 {
@@ -8,11 +7,4 @@ public class AutoDestroyPS : MonoBehaviour
     {
         Destroy(gameObject, GetComponent<ParticleSystem>().duration);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
 }
