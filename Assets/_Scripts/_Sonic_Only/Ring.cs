@@ -25,8 +25,6 @@ public class Ring : MonoBehaviour
         if (fallen)
         {
             Destroy(gameObject, ringLifetime);
-            rb2d.gravityScale = 0.75f;
-            rb2d.AddForce(new Vector2(Random.Range(-4.0f, 4.0f), Random.Range(4, 7)), ForceMode2D.Impulse);
         }
     }
 
@@ -36,6 +34,7 @@ public class Ring : MonoBehaviour
         transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
     }
 
+    // For when it's in its' default suspended state. Exists until player hits it.
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
@@ -44,6 +43,7 @@ public class Ring : MonoBehaviour
         }
     }
 
+    // For when it falls out of the player. In Start() we set it to be destroyed after some time.
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player")
@@ -54,7 +54,7 @@ public class Ring : MonoBehaviour
 
     public void PickupRing()
     {
-        AudioSource.PlayClipAtPoint (ringSound, transform.position);
+        AudioSource.PlayClipAtPoint(ringSound, transform.position);
         PlayerStatus.S.rings += 1;
         Instantiate(ringParticles, transform.position, Quaternion.identity);
         Destroy(gameObject);

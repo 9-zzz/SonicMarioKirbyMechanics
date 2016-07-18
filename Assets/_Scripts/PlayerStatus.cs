@@ -1,14 +1,16 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerStatus : MonoBehaviour
 {
     // This is a singleton.
     public static PlayerStatus S;
 
-    public float flashTime;
-
     public int rings = 0;
+    public int flashes;
+
+    public float flashTime;
 
     public bool gotMushroom = false;
 
@@ -17,12 +19,12 @@ public class PlayerStatus : MonoBehaviour
         S = this;
     }
 
-    public void HurtColliderFlashMethod(int flashes)
+    public void HurtColliderFlashMethod()
     {
-        StartCoroutine(HurtColliderFlash(flashes));
+        StartCoroutine(HurtColliderFlash());
     }
 
-    IEnumerator HurtColliderFlash(int flashes)
+    IEnumerator HurtColliderFlash()
     {
         // Is now on a layer that can not collide with rings. 
         // Set in the editor "Edit" -> "Project Settings" -> "Physics 2D".
@@ -38,6 +40,11 @@ public class PlayerStatus : MonoBehaviour
 
         // Back on default layer after (flashTime*flashes) amount of time, in seconds.
         gameObject.layer = 0;
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }
