@@ -18,18 +18,22 @@ public class Spikes : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        // Game over, man. Game over!
         if (other.gameObject.tag == "Player" && PlayerStatus.S.rings == 0)
             PlayerStatus.S.Restart();
 
         if (other.gameObject.tag == "Player")
+        {
             LoseRings();
+       }
     }
 
     void LoseRings()
     {
         AudioSource.PlayClipAtPoint(ringExplodeSound, transform.position);
 
-        PlayerStatus.S.HurtFlashMethod();
+        // Make sure the spikes are CENTERED.
+        PlayerStatus.S.HurtFlashMethod(transform.position.x);
 
         for (int i = 0; i < PlayerStatus.S.rings; i++)
         {
@@ -37,7 +41,7 @@ public class Spikes : MonoBehaviour
             ringShooter.transform.rotation = Quaternion.Euler(0, 0, Random.Range(-90, 90));
 
             // Alternative method for shooting rings out of the player. 
-            //ringShooter.transform.Rotate(0, 0, (180 / PlayerStatus.S.rings));
+            // ringShooter.transform.Rotate(0, 0, (180 / PlayerStatus.S.rings));
 
             var ringF = Instantiate(ringFallen, PlayerStatus.S.transform.position, Quaternion.identity) as GameObject;
 
