@@ -4,9 +4,9 @@ using System.Collections;
 // This is an extremely quick and dirty demo-only 2D character controller.
 // The focus of this tutorial is on the other mechanics.
 // I put physics-2D-material with zero friction on the collider to stop from "sticking" to walls.
-public class Simple2DPlayerMovement : MonoBehaviour
+public class Player2DMovement: MonoBehaviour
 {
-    public static Simple2DPlayerMovement S;
+    public static Player2DMovement S;
 
     // Set mass to 100. Set gravity scale to 3. Freeze rotation along Z-axis.
     Rigidbody2D rb2d;

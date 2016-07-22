@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 300
-  ringLifetime: 20
+  ringLifetime: 5
   ringParticles: {fileID: 172582, guid: 0c78597af7e681e48b9e38fbd2241947, type: 2}
   fallen: 1
   ringSound: {fileID: 8300000, guid: a2e7bfa50f6b6d8419a2fc3c100664fd, type: 3}

@@ -20,12 +20,13 @@ public class Spikes : MonoBehaviour
     {
         // Game over, man. Game over!
         if (other.gameObject.tag == "Player" && PlayerStatus.S.rings == 0)
+        {
             PlayerStatus.S.Restart();
-
-        if (other.gameObject.tag == "Player")
+        }
+        else if (other.gameObject.tag == "Player")
         {
             LoseRings();
-       }
+        }
     }
 
     void LoseRings()

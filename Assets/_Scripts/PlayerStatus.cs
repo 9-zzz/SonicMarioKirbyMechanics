@@ -36,7 +36,7 @@ public class PlayerStatus : MonoBehaviour
         // Is now on a layer that can not collide with rings.
         // To view layer collision matrix: "Edit" -> "Project Settings" -> "Physics 2D".
         gameObject.layer = 8;
-        Simple2DPlayerMovement.S.canMove = false;
+        Player2DMovement.S.canMove = false;
 
         // Player movement is disables and player is pushed in a direction relative to spikes hit.
         if (transform.position.x > spikesXposition)
@@ -57,7 +57,7 @@ public class PlayerStatus : MonoBehaviour
         // Back on default layer after (flashTime*flashes) amount of time, in seconds.
         // Now player can collide with rings again.
         gameObject.layer = 0;
-        Simple2DPlayerMovement.S.canMove = true;
+        Player2DMovement.S.canMove = true;
     }
 
     // Reloads the current scene. MUST have line 3 for this.
