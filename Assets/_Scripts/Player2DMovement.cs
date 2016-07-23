@@ -11,7 +11,7 @@ public class Player2DMovement: MonoBehaviour
     // Set mass to 100. Set gravity scale to 3. Freeze rotation along Z-axis.
     Rigidbody2D rb2d;
 
-    public float maxSpeed = 5.0f;
+    public float speed = 5.0f;
     public float jumpSpeed = 12.0f;
 
     public bool canJump = false;
@@ -23,11 +23,14 @@ public class Player2DMovement: MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    // Fully explains 'GetAxis' -> https://unity3d.com/learn/tutorials/topics/scripting/getaxis
+    // Explains 'FixedUpdate' -> http://unity3d.com/learn/tutorials/topics/scripting/update-and-fixedupdate
     void FixedUpdate()
     {
         if (canMove)
-            rb2d.velocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, rb2d.velocity.y);
+        {
+            // Explains 'GetAxis' -> https://unity3d.com/learn/tutorials/topics/scripting/getaxis
+            rb2d.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb2d.velocity.y);
+        }
     }
 
     // Update is called once per frame
