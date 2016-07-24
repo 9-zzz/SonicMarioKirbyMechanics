@@ -11,6 +11,7 @@ public class PlayerStatus : MonoBehaviour
     public Rigidbody2D rb2d;
 
     MeshRenderer mRenderer;
+    Collider2D coll;
 
     public int rings = 0;
     public int flashes = 5;
@@ -19,11 +20,14 @@ public class PlayerStatus : MonoBehaviour
 
     public bool gotMushroom = false;
 
+    public AudioClip deathSound;
+
     void Awake()
     {
         S = this;
         mRenderer = GetComponent<MeshRenderer>();
         rb2d = GetComponent<Rigidbody2D>();
+        coll = GetComponent<Collider2D>();
     }
 
     public void HurtFlashMethod(float spikesXposition)
@@ -60,9 +64,22 @@ public class PlayerStatus : MonoBehaviour
         Player2DMovement.S.canMove = true;
     }
 
-    // Reloads the current scene. MUST have line 3 for this.
-    public void Restart()
+    public void DeathFall()
     {
+        // Make sure the player is not behind anything and collides with nothing.
+        transform.Translate(transform.forward * -1);
+        coll.enabled = false;
+
+        AudioSource.PlayClipAtPoint(deathSound, transform.position);
+        Player2DMovement.S.canMove = false;
+        rb2d.velocity = new Vector2(0, 10);
+        StartCoroutine(TimedRestart(2));
+    }
+
+    // Reloads the current scene after 'x' seconds. MUST have line 3 for this.
+    IEnumerator TimedRestart(float x)
+    {
+        yield return new WaitForSeconds(x);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

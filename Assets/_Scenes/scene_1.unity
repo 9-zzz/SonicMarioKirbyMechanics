@@ -877,7 +877,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 613127758}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &644150032
 Prefab:
   m_ObjectHideFlags: 0
@@ -1659,7 +1659,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1218857052}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1222883825
 GameObject:
   m_ObjectHideFlags: 0
@@ -3921,6 +3921,7 @@ MonoBehaviour:
   flashes: 5
   flashTime: 0.15
   gotMushroom: 0
+  deathSound: {fileID: 8300000, guid: c66d01feaaca6f44da2b74542da9fbc5, type: 3}
 --- !u!4 &1886356803 stripped
 Transform:
   m_PrefabParentObject: {fileID: 429436, guid: f07fe2c54645a7246868cc56f48f012e, type: 2}

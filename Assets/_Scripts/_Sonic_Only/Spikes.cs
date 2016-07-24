@@ -21,7 +21,7 @@ public class Spikes : MonoBehaviour
         // Game over, man. Game over!
         if (other.gameObject.tag == "Player" && PlayerStatus.S.rings == 0)
         {
-            PlayerStatus.S.Restart();
+            PlayerStatus.S.DeathFall();
         }
         else if (other.gameObject.tag == "Player")
         {
