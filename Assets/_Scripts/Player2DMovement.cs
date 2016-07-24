@@ -26,11 +26,11 @@ public class Player2DMovement: MonoBehaviour
     // Explains 'FixedUpdate' -> http://unity3d.com/learn/tutorials/topics/scripting/update-and-fixedupdate
     void FixedUpdate()
     {
+        // Explains 'GetAxis' -> https://unity3d.com/learn/tutorials/topics/scripting/getaxis
+        float xinput = Input.GetAxis("Horizontal");
+
         if (canMove)
-        {
-            // Explains 'GetAxis' -> https://unity3d.com/learn/tutorials/topics/scripting/getaxis
-            rb2d.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb2d.velocity.y);
-        }
+            rb2d.velocity = new Vector2(xinput * speed, rb2d.velocity.y);
     }
 
     // Update is called once per frame
