@@ -8,6 +8,8 @@ TagManager:
   - PlayerTop
   - ring
   - ground
+  - kirbyFood
+  - kirby
   layers:
   - Default
   - TransparentFX
