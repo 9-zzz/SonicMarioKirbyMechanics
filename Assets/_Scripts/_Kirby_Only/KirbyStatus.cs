@@ -84,6 +84,7 @@ public class KirbyStatus : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
+              // should probably be a switch case or something.
                 if(monsterInMouthID == 0) // 0 is BLUE
                 {
                     KirbyMovement.S.Shrink();
