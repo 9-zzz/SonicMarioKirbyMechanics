@@ -84,14 +84,15 @@ public class KirbyStatus : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-              // should probably be a switch case or something.
+                // should probably be a switch case or something.
+                // colors set in editor.
                 if(monsterInMouthID == 0) // 0 is BLUE
                 {
                     KirbyMovement.S.Shrink();
                     bodySprite.color = Color.blue;
                 }
 
-                if(monsterInMouthID == 1) // 1 is GREEN
+                if(monsterInMouthID == 1) // 1 is RED 
                 {
                     KirbyMovement.S.Shrink();
                     bodySprite.color = Color.red;
