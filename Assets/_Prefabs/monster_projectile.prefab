@@ -9,13 +9,14 @@ GameObject:
   m_Component:
   - 4: {fileID: 467174}
   - 212: {fileID: 21225644}
-  - 114: {fileID: 11427796}
+  - 114: {fileID: 11423250}
+  - 58: {fileID: 5880274}
   - 50: {fileID: 5094526}
   - 198: {fileID: 19846796}
   - 199: {fileID: 19993442}
-  m_Layer: 0
-  m_Name: kirby_spit
-  m_TagString: Untagged
+  m_Layer: 10
+  m_Name: monster_projectile
+  m_TagString: kirbyPuff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,8 +28,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.4788632, y: -0.91019803, z: 2.1122832}
-  m_LocalScale: {x: 0.18217026, y: 0.18217026, z: 0.18217026}
+  m_LocalPosition: {x: 1.955, y: -0.66996217, z: 2.1122832}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -49,8 +50,22 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &11427796
+  m_Constraints: 4
+--- !u!58 &5880274
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144474}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
+--- !u!114 &11423250
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -58,11 +73,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 144474}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b639492eda671ee4ba8788c36fca19d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 447236857aeaf6245b114e3d8f01bc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootForce: 5
-  lifeTime: 1.5
+  shootForce: 15
+  lifeTime: 10
 --- !u!198 &19846796
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -428,7 +443,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 10
-    radius: 1
+    radius: 0.5
     angle: 25
     length: 5
     boxX: 1
@@ -449,7 +464,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 10
+      scalar: 30
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1629,7 +1644,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: d19cd9667c15a9344b3d61f781088d5c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0808dc34bd0bfdc4f8eb8f21763cf316, type: 3}
   m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0

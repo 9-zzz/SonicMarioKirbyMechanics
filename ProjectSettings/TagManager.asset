@@ -10,6 +10,7 @@ TagManager:
   - ground
   - kirbyFood
   - kirby
+  - kirbyPuff
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - 
   - ring
   - ground
-  - 
-  - 
+  - kirbyProjectiles
+  - kirby
   - 
   - 
   - 

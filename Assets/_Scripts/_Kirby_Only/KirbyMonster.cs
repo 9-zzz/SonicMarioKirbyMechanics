@@ -20,13 +20,16 @@ public class KirbyMonster : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "kirby")
+        if (coll.gameObject.tag == "kirbyPuff")
         {
-            KirbyMovement.S.Englarge();
+            Destroy(gameObject);
+        }
 
-            // Pass Kirby the monster ID
-            KirbyStatus.S.monsterInMouthID = monsterID;
-            KirbyStatus.S.canSuck = false;
+        if (coll.gameObject.tag == "kirby" && KirbyController.S.isSucking)
+        {
+            KirbyController.S.InhaleMonster(monsterID);
+
+            //KirbyStatus.S.canSuck = false;
 
             Destroy(gameObject);
         }
