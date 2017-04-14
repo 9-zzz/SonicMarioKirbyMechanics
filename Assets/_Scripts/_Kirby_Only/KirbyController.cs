@@ -43,6 +43,9 @@ public class KirbyController : MonoBehaviour
 
     float xinput;
 
+    public AudioClip jumpSound;
+    public AudioClip puffOutSound;
+
     void Awake()
     {
         S = this;
@@ -82,7 +85,9 @@ public class KirbyController : MonoBehaviour
                 if (hit.collider.gameObject.tag == "kirbyFood")
                 {
                     // Should be using rigidbody code to do this. maybe effector or other fancy unity physics2d stuff?
-                    hit.collider.gameObject.transform.position = Vector3.MoveTowards(hit.collider.gameObject.transform.position, transform.position, Time.deltaTime * suckSpeed);
+                    hit.collider.gameObject.transform.position = Vector3.MoveTowards(hit.collider.gameObject.transform.position, transform.position, 
+                        Time.deltaTime * suckSpeed);
+
                     hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 }
             }
@@ -145,6 +150,8 @@ public class KirbyController : MonoBehaviour
                 {
                     rb2d.velocity = new Vector2(0, puffSpeed);
 
+                    AudioSource.PlayClipAtPoint(jumpSound, transform.position);
+
                     if (!puffed)
                         TogglePuffedState();
                 }
@@ -189,6 +196,7 @@ public class KirbyController : MonoBehaviour
 
         if (canMove)
             rb2d.velocity = new Vector2(xinput * speed, rb2d.velocity.y);
+
     }
 
 
@@ -215,6 +223,7 @@ public class KirbyController : MonoBehaviour
         // Smaller faster.
         if (puffed == false)
         {
+            AudioSource.PlayClipAtPoint(puffOutSound, transform.position);
             transform.localScale /= 2;
             speed *= 2;
             rb2d.gravityScale *= 2;

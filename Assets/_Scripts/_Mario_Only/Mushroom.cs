@@ -7,6 +7,7 @@ public class Mushroom : MonoBehaviour
     public bool outsideOfBlock = false;
 
     Rigidbody2D rb2d;
+    public float mushxVelocity = 1;
 
     void Awake()
     {
@@ -27,7 +28,7 @@ public class Mushroom : MonoBehaviour
         if (!outsideOfBlock)
             transform.Translate(0, 1.0f * Time.deltaTime, 0);
         else
-            rb2d.velocity = new Vector2(1, rb2d.velocity.y);
+            rb2d.velocity = new Vector2(mushxVelocity, rb2d.velocity.y);
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -42,6 +43,11 @@ public class Mushroom : MonoBehaviour
 
      void OnCollisionEnter2D(Collision2D other)
     {
+        if (other.gameObject.tag != "Player")
+        {
+            mushxVelocity = -mushxVelocity;
+        }
+
         if (other.gameObject.tag == "Player")
         {
             PlayerStatus.S.transform.localScale *= 2;
