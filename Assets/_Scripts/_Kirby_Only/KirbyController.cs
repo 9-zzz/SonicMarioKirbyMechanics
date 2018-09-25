@@ -78,7 +78,11 @@ public class KirbyController : MonoBehaviour
             mouth.transform.localScale = Vector2.MoveTowards(mouth.transform.localScale, targetMouthScale, Time.deltaTime * 3);
 
             RaycastHit2D hit = Physics2D.Raycast(mouth.transform.position, (mouth.transform.right * transform.localScale.x), suckDistance);
+
+
+            // pounts to 0,0 whe it hits nothing
             Debug.DrawLine(mouth.transform.position, hit.point, Color.blue);
+            //print(hit.point);
 
             if (hit)
             {

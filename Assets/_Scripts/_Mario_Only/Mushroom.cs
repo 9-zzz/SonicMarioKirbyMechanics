@@ -45,7 +45,7 @@ public class Mushroom : MonoBehaviour
     {
         if (other.gameObject.tag != "Player")
         {
-            mushxVelocity = -mushxVelocity;
+            //mushxVelocity = -mushxVelocity;
         }
 
         if (other.gameObject.tag == "Player")
